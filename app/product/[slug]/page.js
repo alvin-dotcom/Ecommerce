@@ -4,7 +4,7 @@ import ProductClient from "./ProductClient";
 
 export async function generateStaticParams() {
   const products = await fetchDataFromApi("/api/products?populate=*");
-  return products.data.map((p) => ({
+  return products?.data?.map((p) => ({
     slug: p.attributes.slug,
   }));
 }

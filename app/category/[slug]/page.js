@@ -7,7 +7,7 @@ const maxResult = 3;
 
 export async function generateStaticParams() {
   const categories = await fetchDataFromApi('/api/categories?populate=*');
-  return categories.data.map((c) => ({
+  return categories?.data?.map((c) => ({
     slug: c.attributes.slug,
   }));
 }
