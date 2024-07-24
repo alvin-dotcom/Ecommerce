@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import { BsChevronDown } from "react-icons/bs";
 import PropTypes from 'prop-types';
 
@@ -10,11 +10,9 @@ const data = [
   { id: 4, name: "Contact", url: "/contact" },
 ];
 
-
-const Menu = ({showCatMenu, setShowCatMenu, categories,}) => {
-
+const Menu = ({ showCatMenu, setShowCatMenu, categories }) => {
   return (
-    <ul className="hidden md:flex items-center gap-8 font-medium text-black ">
+    <ul className="hidden md:flex items-center gap-8 font-medium text-black">
       {data.map((item) => (
         <React.Fragment key={item.id}>
           {!!item?.subMenu ? (
@@ -27,8 +25,8 @@ const Menu = ({showCatMenu, setShowCatMenu, categories,}) => {
               <BsChevronDown size={14} />
 
               {showCatMenu && (
-                <ul className="bg-white absolute top-6 left-0 min-w-[250px] px-1 py-1 text-black shadow-lg">
-                  {categories?.map(({attributes: c, id}) => (
+                <ul className="absolute bg-white top-full left-0 min-w-[250px] px-1 py-1 text-black shadow-lg mt-2">
+                  {categories?.map(({ attributes: c, id }) => (
                     <Link
                       key={id}
                       href={`/category/${c.slug}`}
@@ -72,6 +70,5 @@ Menu.propTypes = {
     })
   ).isRequired,
 };
-
 
 export default Menu;
